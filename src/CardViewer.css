@@ -1,0 +1,15 @@
+.card {
+    border: 1px solid black;
+    width: fit-content;
+    min-width: 200px;
+    text-align: center;
+    padding: 75px;
+}
+  
+.card:hover {
+    cursor: pointer;
+}
+
+body {
+    font-family: Montserrat;
+}

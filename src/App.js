@@ -8,9 +8,9 @@ class App extends React.Component {
     super(props);
     this.state = {
       cards: [
-        {front: 'front1', back: 'back1'},
-        {front: 'front2', back: 'back2'},
+        {front: 'Bonjour', back: 'Hello'},
       ],
+      currentIndex: 0,
       editor: true,
     };
   }
@@ -22,8 +22,14 @@ class App extends React.Component {
 
   deleteCard = index => {
     const cards = this.state.cards.slice();
-    cards.splice(index, 1);
-    this.setState({cards}); 
+    if (index > 0) {
+      cards.splice(index, 1);
+      this.setState({cards}); 
+    }
+    else {
+      alert('Cannot delete all cards!');
+      return;
+    }
   }
   
   switchMode = () => this.setState({editor: !this.state.editor});
@@ -38,7 +44,11 @@ class App extends React.Component {
       />);
     }
     else {
-      return <CardViewer switchMode={this.switchMode}/>;
+      return (<CardViewer 
+      switchMode={this.switchMode}
+      cards={this.state.cards}
+      displayFront={this.displayFront}
+      />);
     }
   }
 }
